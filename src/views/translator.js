@@ -1,31 +1,31 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import {
     TouchableHighlight,
     View,
     Text,
     TextInput,
     StyleSheet,
-    Picker,
 } from 'react-native';
 
 
 const TranslatorView = () => {
 
+
     const [inputText, setText] = useState('');
     const [responseText, setResponse] = useState('');
-
+    const apiKey = '';
 
     function postTranslateService(text) {
-        text != '' ? 
-        fetch('https://translate.yandex.net/api/v1.5/tr.json/translate?key=${API_KEY}&text=' + text + '&lang=en-tr')
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(res.text)
-                setResponse(res.text)
-            })
-            .catch((error) => {
-                console.log(error)
-            }): setResponse('Boş bırakıyosun ayıp ediyosun.')
+        text != '' ?
+            fetch('https://translate.yandex.net/api/v1.5/tr.json/translate?key=' + apiKey + '&text=' + text + '&lang=en-tr')
+                .then((res) => res.json())
+                .then((res) => {
+                    console.log(res.text)
+                    setResponse(res.text)
+                })
+                .catch((error) => {
+                    console.log(error)
+                }) : setResponse('Boş bırakıyosun ayıp ediyosun.')
     };
 
     return (
@@ -40,7 +40,7 @@ const TranslatorView = () => {
                     underlineColorAndroid='transparent'
                     onChangeText={text => setText(text)} />
             </View>
-         
+
             <TouchableHighlight style={[styles.buttonContainer, styles.translateButton]} onPress={() => postTranslateService(inputText)}>
                 <Text style={styles.translateText}>Translate it!</Text>
             </TouchableHighlight>
@@ -61,7 +61,7 @@ var styles = StyleSheet.create({
     },
     // eng-tr style
     headline: {
-        marginBottom:50,
+        marginBottom: 50,
         textAlign: 'center',
         alignContent: 'center',
         fontWeight: 'bold',

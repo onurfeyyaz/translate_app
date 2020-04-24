@@ -34,7 +34,7 @@ function TabBar({ state, descriptors, navigation }) {
                         style={{
                             flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                             width: 60, height: 60,
-                            backgroundColor: '#00b5ec', borderRadius: 999,
+                            backgroundColor: '#00b5ec', borderRadius: 5,
 
                         }}>
                         <Text style={{ color: '#FFFFFF' }}>
